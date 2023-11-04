@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from blog.models import User
 from blog.auth.forms import RegisterForm
 from blog.models import db
