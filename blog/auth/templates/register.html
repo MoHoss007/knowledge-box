@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('auth.static', filename='styles.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="auth-container">
+  <form>
+    <h1>Create Account</h1>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="register-input-username" placeholder="Username">
+      <label for="register-input-username">Username</label>
+    </div>
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="register-input-email" placeholder="name@example.com">
+      <label for="register-input-email">Email address</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="register-input-password" placeholder="Password" autocomplete="off">
+      <label for="register-input-password">Password</label>
+    </div>
+    <button type="submit" class="btn btn-lg btn-primary">Register</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,35 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
 
-    <!-- Bootstrap template -->
-    <link rel="stylesheet" href="../static/litera.css">
+  <!-- Bootstrap template -->
+  <link rel="stylesheet" href="../static/litera.css">
 
-    <!-- Custom CSS styles -->
-    <link rel="stylesheet" href="../static/styles.css">
+  <!-- Global custom CSS styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 
-    <title>{% block title %}{% endblock %}</title>
+  <!-- Local custom CSS styles -->
+  {% block stylesheet %}{% endblock %}
+
+  <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Home</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor01">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('home.home_page') }}">Home</a>
+          </li>
+        </ul>
+      </div>
+      <form class="d-flex">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Login</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href="{{ url_for('auth.register_page') }}">Register</a>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </nav>
 
-    {% block content %}{% endblock %}
+  {% block content %}{% endblock %}
 
 </body>
 </html>
