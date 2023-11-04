@@ -12,33 +12,36 @@
 
     <div class="form-group">
       <label class="col-form-label mt-4" for="register-input-username">{{ form.username.label() }}</label>
-      <input type="text" class="form-control" placeholder="Username" id="register-input-username">
+<!--      <input type="text" class="form-control" placeholder="Username" id="register-input-username">-->
+      {{ form.username(class="form-control") }}
     </div>
 
     <div class="form-group">
       <label class="col-form-label mt-4" for="register-input-email">{{ form.email.label() }}</label>
-      <input type="text" class="form-control" placeholder="Email" id="register-input-email">
+      {{ form.email(type="text", class="form-control", placeholder="Email", id="register-input-email") }}
     </div>
 
     <div class="form-group">
       <label class="col-form-label mt-4" for="register-input-password">{{ form.password.label() }}</label>
       <input type="text" class="form-control" placeholder="Password" id="register-input-password">
+      {{ form.password(class="form-control") }}
     </div>
 
     <div class="form-group">
       <label class="col-form-label mt-4" for="register-input-password-confirmation">{{ form.password_confirmation.label() }}</label>
       <input type="text" class="form-control" placeholder="Password Confirmation" id="register-input-password-confirmation">
+      {{ form.password_confirmation(class="form-control") }}
     </div>
 
-    {{ form.username(class="form-control") }}
 
 
-    {{ form.email(class="form-control") }}
 
 
-    {{ form.password(class="form-control") }}
 
-    {{ form.password_confirmation(class="form-control") }}
+
+
+
+
 
 <!--    <div class="form-floating mb-3">-->
 <!--      <input type="email" class="form-control" id="register-input-username" placeholder="Username" name="username">-->
