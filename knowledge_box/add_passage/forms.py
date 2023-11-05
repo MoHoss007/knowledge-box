@@ -49,8 +49,8 @@ class TextForm(FlaskForm):
 
     passage_topic = SelectField(
         label='Passage topic',
-        choices=[('Math', 'Math'), ('Physics', 'Physics'), ('Chem', 'Chem'), ('Bio', 'Bio'),
-                 ('History', 'History'), ('Literature', 'Literature')],
+        choices=[('Mathematics', 'Mathematics'), ('Physics', 'Physics'), ('Chemistry', 'Chemistry'), ('Biology', 'Biology'),
+                 ('Psychology', 'Psychology'), ('History', 'History')],
         validators=[DataRequired()]
     )
 
