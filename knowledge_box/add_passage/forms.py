@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SelectField, SubmitField, FileField
+from wtforms import StringField, SelectField, SubmitField, FileField, TextAreaField
 from wtforms.validators import DataRequired, ValidationError
 from flask_wtf.file import FileRequired, FileAllowed
 
@@ -39,3 +39,25 @@ class UploadForm(FlaskForm):
                     raise ValidationError('File does not match the selected upload type (PDF).')
             else:
                 raise ValidationError('Invalid file format.')
+
+
+class TextForm(FlaskForm):
+    passage_name = StringField(
+        label='Passage name',
+        validators=[DataRequired()]
+    )
+
+    passage_topic = SelectField(
+        label='Passage topic',
+        choices=[('Math', 'Math'), ('Physics', 'Physics'), ('Chem', 'Chem'), ('Bio', 'Bio'),
+                 ('History', 'History'), ('Literature', 'Literature')],
+        validators=[DataRequired()]
+    )
+
+    passage_text = TextAreaField(
+        label='Passage text',
+        validators=[DataRequired()]
+    )
+
+    submit = SubmitField('Next')
+

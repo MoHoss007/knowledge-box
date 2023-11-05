@@ -1,17 +1,47 @@
 from flask import Blueprint, render_template
-from flask import render_template, redirect, url_for, flash
-from knowledge_box.add_passage.forms import UploadForm
+from flask import render_template, redirect, url_for, flash, request
+from knowledge_box.add_passage.forms import UploadForm, TextForm
 from PyPDF2 import PdfReader
 import cv2
 import io
 import numpy as np
 from knowledge_box.add_passage.model import OCR
+from flask_login import current_user
+from knowledge_box.models import User, Passage, db
+
 add_passage = Blueprint("add_passage", __name__, static_folder="static", template_folder="templates")
 
 
 @add_passage.route("/text", methods=["GET", "POST"])
 def text_page():
-    return render_template("text.html")
+    text = request.args.get('text')
+    name = request.args.get('name')
+    form = TextForm()
+
+    form.passage_text.data = text
+    form.passage_name.data = name
+
+    if form.validate_on_submit():
+        if current_user.is_authenticated:
+            user_backref = User.query.filter_by(username=current_user.username).first()
+            passage = Passage(
+                topic=form.passage_topic.data,
+                title=form.passage_name.data,
+                text=form.passage_text.data,
+                user=user_backref
+            )
+
+            db.session.add(passage)
+            db.session.commit()
+
+            flash(f"Passage created successfully: {passage.title}", category="success")
+            return redirect(url_for("home.home_page"))
+
+    if form.errors != {}:  # form.errors is a dictionary
+        for error_message in form.errors.values():
+            flash(f"There was an error with uploading: {error_message}", category="danger")
+
+    return render_template("text.html", form=form)
 
 
 @add_passage.route("/upload", methods=["GET", "POST"])
@@ -23,7 +53,7 @@ def upload_page():
         upload_type = form.upload_type.data
 
         text = ""
-        name = form.passage_name
+        name = form.passage_name.data
 
         if upload_type == 'PDF':
             pdf_file_stream = io.BytesIO(uploaded_file.read())
@@ -41,7 +71,8 @@ def upload_page():
             img = cv2.imdecode(file_bytes, cv2.IMREAD_COLOR)
             text = ocr.image_to_text(img)
 
-        return redirect(url_for("text.html"), name=name, text=text)
+        return redirect(url_for('add_passage.text_page', name=name, text=text))
+        # return render_template("text.html", name=name, form=form_text)
 
     if form.errors != {}:  # form.errors is a dictionary
         for error_message in form.errors.values():
