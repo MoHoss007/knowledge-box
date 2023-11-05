@@ -1,1 +1,23 @@
 {% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="text-center">
+    <h1 class="display-4 mt-4">Welcome to Knowledge Box</h1>
+    <p class="lead">Your Study Aid for Students</p>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col-md-6">
+      <h2>Store Your Study Materials</h2>
+      <p>Upload text, images, and PDFs to store your study materials securely. Access them anytime, anywhere.</p>
+    </div>
+    <div class="col-md-6">
+      <h2>Interactive Quizzes</h2>
+      <p>Our natural language processing technology generates quizzes from your text materials. Practice and improve your knowledge.</p>
+    </div>
+  </div>
+
+  <a class="btn btn-primary btn-lg mt-4" href="{{ url_for('auth.register_page') }}">Get Started</a>
+</div>
+{% endblock %}

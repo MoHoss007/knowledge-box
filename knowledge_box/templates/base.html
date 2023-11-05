@@ -22,60 +22,62 @@
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('home.home_page') }}">Home</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="{{ url_for('add_passage.text_page') }}">Add Raw Text</a>
-              <a class="dropdown-item" href="{{ url_for('add_passage.upload_page') }}">Upload Media</a>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ url_for('generate_questions.choose_passages_page') }}">Generate Quiz</a>
-          </li>
-        </ul>
-      </div>
-      <form class="d-flex">
-        {% if current_user.is_authenticated %}
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active">
-                <i class="fa fa-user-circle"></i>
-                {{ current_user.username }}
-              </a>
-            </li>
-          </ul>
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('auth.logout') }}">Logout</a>
-            </li>
-          </ul>
-        {% else %}
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('auth.login_page') }}">Login</a>
-            </li>
-          </ul>
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="{{ url_for('auth.register_page') }}">Register</a>
-            </li>
-          </ul>
-        {% endif %}
-      </form>
+        <a class="navbar-brand" href="#">
+            <img src="/static/logo-home.png" alt="Logo" height="40">
+            <strong>KnowledgeBox</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home.home_page') }}">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="{{ url_for('add_passage.text_page') }}">Add Raw Text</a>
+                        <a class="dropdown-item" href="{{ url_for('add_passage.upload_page') }}">Upload Media</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('generate_questions.choose_passages_page') }}">Generate Quiz</a>
+                </li>
+            </ul>
+        </div>
+        <form class="d-flex">
+            {% if current_user.is_authenticated %}
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active">
+                            <i class="fa fa-user-circle"></i>
+                            {{ current_user.username }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('auth.logout') }}">Logout</a>
+                    </li>
+                </ul>
+            {% else %}
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('auth.login_page') }}">Login</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{ url_for('auth.register_page') }}">Register</a>
+                    </li>
+                </ul>
+            {% endif %}
+        </form>
     </div>
-  </nav>
+</nav>
 
   <!-- Flask flashes -->
   {% with messages = get_flashed_messages(with_categories=true) %}
