@@ -11,20 +11,11 @@ from knowledge_box.models import User, Passage, db
 
 add_passage = Blueprint("add_passage", __name__, static_folder="static", template_folder="templates")
 
-
 @add_passage.route("/text", methods=["GET", "POST"])
 def text_page():
-    try:
-        text = request.args.get('text')
-        name = request.args.get('name')
-    except:
-        text = ""
-        name = ""
-
     form = TextForm()
-
-    form.passage_text.data = text
-    form.passage_name.data = name
+    text = request.args.get('text')
+    name = request.args.get('name')
 
     if form.validate_on_submit():
         if current_user.is_authenticated:
@@ -45,6 +36,10 @@ def text_page():
     if form.errors != {}:  # form.errors is a dictionary
         for error_message in form.errors.values():
             flash(f"There was an error with uploading: {error_message}", category="danger")
+
+    if text is not None and name is not None:
+        form.passage_text.data = text
+        form.passage_name.data = name
 
     return render_template("text.html", form=form)
 
