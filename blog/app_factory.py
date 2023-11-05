@@ -12,6 +12,12 @@ def create_app():
     from blog.models import db
     db.init_app(app)
 
+    from blog.models import bcrypt
+    bcrypt.init_app(app)
+
+    from blog.models import login_manager
+    login_manager.init_app(app)
+
     app.app_context().push()
 
     # Register the blueprints
