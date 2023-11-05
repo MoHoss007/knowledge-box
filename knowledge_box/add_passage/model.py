@@ -4,11 +4,12 @@ import cv2
 import numpy as np
 import requests
 
+
 class OCR:
     url_api = "https://api.ocr.space/parse/image"
 
     def __init__(self):
-        with open('path_to_file.json', 'r') as file:
+        with open(r'knowledge_box/add_passage/key.json', 'r') as file:
             data = json.load(file)
         self.key = data["apikey"]
 
