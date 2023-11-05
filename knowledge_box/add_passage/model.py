@@ -3,6 +3,7 @@ import json
 import cv2
 import numpy as np
 import requests
+import re
 
 
 class OCR:
@@ -27,4 +28,5 @@ class OCR:
 
         parsed_results = result.get("ParsedResults")[0]
         text_detected = parsed_results.get("ParsedText")
-        return text_detected
+        refined_text = re.sub(r'[^a-zA-Z0-9 .,]', '', text_detected)
+        return refined_text
