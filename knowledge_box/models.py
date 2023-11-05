@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(length=30), nullable=False, unique=True)
     email = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
+    passages = db.relationship("Passage", backref="user")
 
     @property
     def password(self):
@@ -30,3 +31,11 @@ class User(db.Model, UserMixin):
 
     def check_password(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
+
+
+class Passage(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    topic = db.Column(db.String(length=50), nullable=False)
+    title = db.Column(db.String(length=50), nullable=False, unique=True)
+    text = db.Column(db.String(length=4000), nullable=False, unique=True)
+    user_id = db.Column(db.Integer(), db.ForeignKey("user.id"))
