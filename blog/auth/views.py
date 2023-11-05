@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-from flask import render_template, redirect, url_for, flash, request
+from flask import render_template, redirect, url_for, flash
 from blog.models import User
 from blog.auth.forms import RegisterForm
 from blog.models import db
@@ -23,7 +23,7 @@ def register_page():
 
         # login_user(user_to_create)
         flash(f"Account created successfully: {user_to_create.username}", category="success")
-        return redirect(url_for("home_page"))
+        return redirect(url_for("home.home_page"))
 
     if form.errors != {}:  # form.errors is a dictionary
         for error_message in form.errors.values():

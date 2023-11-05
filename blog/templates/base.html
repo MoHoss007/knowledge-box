@@ -12,6 +12,8 @@
   <!-- Local custom CSS styles -->
   {% block stylesheet %}{% endblock %}
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -43,6 +45,18 @@
       </form>
     </div>
   </nav>
+
+  <!-- Flask flashes -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-dismissible alert-{{ category }}">
+          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
 
   {% block content %}{% endblock %}
 

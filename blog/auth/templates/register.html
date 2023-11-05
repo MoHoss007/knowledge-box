@@ -6,56 +6,30 @@
 
 {% block content %}
 <div class="auth-container">
-  <form method="POST" action="/submit">
+  <form method="POST" novalidate>
     {{ form.hidden_tag() }}
     <h1>Create Account</h1>
 
     <div class="form-group">
-      <label class="col-form-label mt-4" for="register-input-username">{{ form.username.label() }}</label>
-      <input type="text" class="form-control" placeholder="Username" id="register-input-username">
+      {{ form.username.label() }}
+      {{ form.username(class="form-control") }}
     </div>
-
+    <br>
     <div class="form-group">
-      <label class="col-form-label mt-4" for="register-input-email">{{ form.email.label() }}</label>
-      <input type="text" class="form-control" placeholder="Email" id="register-input-email">
+      {{ form.email.label() }}
+      {{ form.email(class="form-control") }}
     </div>
-
+    <br>
     <div class="form-group">
-      <label class="col-form-label mt-4" for="register-input-password">{{ form.password.label() }}</label>
-      <input type="text" class="form-control" placeholder="Password" id="register-input-password">
+      {{ form.password.label() }}
+      {{ form.password(class="form-control") }}
     </div>
-
+    <br>
     <div class="form-group">
-      <label class="col-form-label mt-4" for="register-input-password-confirmation">{{ form.password_confirmation.label() }}</label>
-      <input type="text" class="form-control" placeholder="Password Confirmation" id="register-input-password-confirmation">
+      {{ form.password_confirmation.label() }}
+      {{ form.password_confirmation(class="form-control") }}
     </div>
 
-    {{ form.username(class="form-control") }}
-
-
-    {{ form.email(class="form-control") }}
-
-
-    {{ form.password(class="form-control") }}
-
-    {{ form.password_confirmation(class="form-control") }}
-
-<!--    <div class="form-floating mb-3">-->
-<!--      <input type="email" class="form-control" id="register-input-username" placeholder="Username" name="username">-->
-<!--      <label for="register-input-username">{{ form.username.label() }}</label>-->
-<!--    </div>-->
-<!--    <div class="form-floating mb-3">-->
-<!--      <input type="email" class="form-control" id="register-input-email" placeholder="name@example.com" name="email">-->
-<!--      <label for="register-input-email">{{ form.email.label() }}</label>-->
-<!--    </div>-->
-<!--    <div class="form-floating mb-3">-->
-<!--      <input type="email" class="form-control" id="register-input-password" placeholder="Password" name="password">-->
-<!--      <label for="register-input-password">{{ form.password.label() }}</label>-->
-<!--    </div>-->
-<!--    <div class="form-floating mb-3">-->
-<!--      <input type="email" class="form-control" id="register-input-password-confirmation" placeholder="Password Confirmation" name="password_confirmation">-->
-<!--      <label for="register-input-password-confirmation">{{ form.password_confirmation.label() }}</label>-->
-<!--    </div>-->
     <button type="submit" class="btn btn-lg btn-primary">Register</button>
   </form>
 </div>
