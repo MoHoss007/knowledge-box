@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
 from flask import render_template, redirect, url_for, flash
-from blog.models import User
-from blog.auth.forms import RegisterForm, LoginForm
-from blog.models import db
+from knowledge_box.models import User
+from knowledge_box.auth.forms import RegisterForm, LoginForm
+from knowledge_box.models import db
 from flask_login import login_user, logout_user, login_required
 
 auth = Blueprint("auth", __name__, static_folder="static", template_folder="templates")

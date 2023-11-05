@@ -1,4 +1,4 @@
-from blog.app_factory import create_app
+from knowledge_box.app_factory import create_app
 import nltk
 
 if __name__ == "__main__":
