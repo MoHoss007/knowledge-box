@@ -14,8 +14,13 @@ add_passage = Blueprint("add_passage", __name__, static_folder="static", templat
 
 @add_passage.route("/text", methods=["GET", "POST"])
 def text_page():
-    text = request.args.get('text')
-    name = request.args.get('name')
+    try:
+        text = request.args.get('text')
+        name = request.args.get('name')
+    except:
+        text = ""
+        name = ""
+
     form = TextForm()
 
     form.passage_text.data = text
