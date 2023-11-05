@@ -20,3 +20,5 @@ nltk
 opencv-python
 requests
 numpy
+email_validator
+PyPDF2
