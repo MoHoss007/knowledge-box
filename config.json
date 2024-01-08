@@ -1,0 +1,21 @@
+{
+  "DATABASE": {
+    "HOST": "localhost",
+    "USERNAME": "",
+    "PASSWORD": "",
+    "PORT": "3306",
+    "NAME": "knowledgebox"
+  },
+  "SECRET_KEY": "8f1c53363ab158468a956baf",
+  "API_KEY": "your ocr.space api key",
+  "DEBUG": true,
+  "PORT": 5000,
+  "TOPICS": [
+        "mathematics",
+        "physics",
+        "chemistry",
+        "biology",
+        "psychology",
+        "history"
+  ]
+}

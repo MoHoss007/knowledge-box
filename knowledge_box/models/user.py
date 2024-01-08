@@ -1,8 +1,7 @@
-from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin
+from knowledge_box.extensions import db
 
-db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 login_manager.login_view = "login_page"
@@ -31,11 +30,3 @@ class User(db.Model, UserMixin):
 
     def check_password(self, attempted_password):
         return bcrypt.check_password_hash(self.password_hash, attempted_password)
-
-
-class Passage(db.Model):
-    id = db.Column(db.Integer(), primary_key=True)
-    topic = db.Column(db.String(length=50), nullable=False)
-    title = db.Column(db.String(length=50), nullable=False, unique=True)
-    text = db.Column(db.String(length=4000), nullable=False, unique=True)
-    user_id = db.Column(db.Integer(), db.ForeignKey("user.id"))

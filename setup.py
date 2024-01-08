@@ -1,12 +1,21 @@
-from knowledge_box.models import db
-from knowledge_box.app_factory import create_app
+import json
 import nltk
+import mysql.connector
 
+#run only for the first time
 if __name__ == "__main__":
     nltk.download('punkt')
     nltk.download('averaged_perceptron_tagger')
     nltk.download('wordnet')
     nltk.download('stopwords')
 
-    app = create_app()
-    db.create_all()
+    with open("config.json") as config_file:
+        config = json.load(config_file)
+        db_config = config["DATABASE"]
+
+    db = mysql.connector.connect(host=db_config["HOST"], user=db_config["USERNAME"], password=db_config["PASSWORD"])
+    cursor = db.cursor()
+    cursor.execute(f"CREATE DATABASE {db_config['NAME']}")
+
+
+

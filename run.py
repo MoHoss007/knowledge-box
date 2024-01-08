@@ -1,5 +1,5 @@
-from knowledge_box.app_factory import create_app
+from knowledge_box import create_app
 
 if __name__ == "__main__":
-    app = create_app()
-    app.run(debug=True)
+    app = create_app("config.json")
+    app.run(port=app.config['PORT'], debug=app.config['DEBUG'])

@@ -17,8 +17,13 @@ Werkzeug==3.0.1
 WTForms==3.1.1
 zipp==3.17.0
 nltk
-opencv-python
+Flask-Migrate
 requests
 numpy
 email_validator
-PyPDF2
+mysql-connector
+mysql-connector-python
+pymysql
+cryptography
+
+
