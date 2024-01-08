@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
+{% block content %}
+  <div class="auth-container">
+    <form method="POST" novalidate>
+      {{ form.hidden_tag() }}
+      <h1>Log Into Account</h1>
+
+      <div class="form-group">
+        {{ form.username_or_email.label() }}
+        {{ form.username_or_email(class="form-control") }}
+      </div>
+      <br>
+      <div class="form-group">
+        {{ form.password.label() }}
+        {{ form.password(class="form-control") }}
+      </div>
+
+      <button type="submit" class="btn btn-lg btn-primary">Login</button>
+    </form>
+  </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+:root {
+    --vertical-offset: 24px;
+}
+
+.hide {
+    display: none !important;
+}
+
+.flex-container-horizontal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container {
+    padding: 40px;
+}
+
+.column {
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.column h1 {
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: var(--vertical-offset);
+}
+
+.column button {
+    margin-top: var(--vertical-offset);
+}
+
+.table {
+    text-align: left;
+}
+
+#choose_passages_button_apply_filters {
+    margin-left: 30px;
+}
+
+.mcq-container {
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.mcq-container h6 {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+.correct-option {
+    background-color: #50C878;
+    opacity: 0.6;
+}
+
+.incorrect-option {
+    background-color: #D2042D;
+    opacity: 0.6;
+}
+
+.form-check {
+    border-radius: 10px;
+
+}

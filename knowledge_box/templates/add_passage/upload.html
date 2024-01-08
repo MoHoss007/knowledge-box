@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/add_passage.css') }}">
+{% endblock %}
+
+{% block script %}
+    <script src="{{ url_for('static', filename='js/add_passage.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" novalidate>
+        {{ form.hidden_tag() }}
+        <div class="row">
+            <!-- Left column for the passage name and upload type -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form.passage_name.label(class="form-label mt-4") }}
+                    {{ form.passage_name(class="form-control", id="selectName", placeholder=form.passage_name.label.text) }}
+                    {% if form.passage_name.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.passage_name.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.upload_type.label(class="form-label mt-4") }}
+                    {{ form.upload_type(class="form-select", id="selectType") }}
+                    {% if form.upload_type.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.upload_type.errors[0] }}
+                        </div>
+                    {% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg mt-4">Next</button>
+            </div>
+            <!-- Right column for the file upload -->
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form.file_upload.label(class="form-label mt-4") }}
+                    {{ form.file_upload(class="form-control", id="formFile", onchange="previewFile()") }}
+                    {% if form.file_upload.errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.file_upload.errors[0] }}
+                        </div>
+                    {% endif %}
+                    <div id="previewContainer" class="preview-container mt-4"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+

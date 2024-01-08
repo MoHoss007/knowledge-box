@@ -1,0 +1,27 @@
+:root {
+    --form-vertical-offset: 40px;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.auth-container form {
+    width: 500px;
+    border: 2px solid #ccc; /* Add a border with a light gray color */
+    border-radius: 20px; /* Add rounded corners */
+    background-color: #fff; /* Set a background color for the container */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    padding: 50px;
+}
+
+.auth-container form h1 {
+    margin-bottom: var(--form-vertical-offset);
+    font-size: 30px;
+}
+
+.auth-container form button {
+    margin-top: var(--form-vertical-offset);
+}

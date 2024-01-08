@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}
+  Choose Passage
+{% endblock %}
+
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/generate_question.css') }}">
+{% endblock %}
+
+{% block script %}
+  <script defer src="{{ url_for('static', filename='js/generate_question.js') }}"></script>
+{% endblock %}
+
+{% block content %}
+  <div class="flex-container-horizontal">
+    <div class="column">
+      <h1>Filter Topics</h1>
+      <table class="table table-hover" id="choose-passages-table-topics">
+        <tbody>
+          {% for topic in topics %}
+            <tr>
+              <td><input type="checkbox" id="choose-passages-input-{{ topic }}" name="topics" value="{{ topic }}"></td>
+              <td>{{ topic.title() }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-success" id="choose_passages_button_select_all">Select All</button>
+        <button type="button" class="btn btn-danger" id="choose_passages_button_deselect_all">Deselect All</button>
+        <button type="button" class="btn btn-primary" id="choose_passages_button_apply_filters">Apply Filter(s)</button>
+      </div>
+    </div>
+    <div class="column">
+      <form method="POST">
+        {{ proceed_form.hidden_tag() }}
+        <h1>Passages</h1>
+        <table class="table table-hover" id="choose-passages-table-passages">
+          <tbody>
+          {% for passage in passages %}
+          <tr id="choose-passages-tr-{{ passage.title }}" topic="{{ passage.topic }}">
+            <td><input type="checkbox" name="passages" value="{{ passage.title }}"></td>
+            <td><span class="badge bg-info">{{ passage.topic.title() }}</span></td>
+            <td>{{ passage.title }}</td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+        <button type="submit" class="btn btn-primary" id="choose_passages_button_proceed">Proceed to Quiz</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
