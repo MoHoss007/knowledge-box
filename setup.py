@@ -15,7 +15,7 @@ if __name__ == "__main__":
 
     db = mysql.connector.connect(host=db_config["HOST"], user=db_config["USERNAME"], password=db_config["PASSWORD"])
     cursor = db.cursor()
-    cursor.execute(f"CREATE DATABASE {db_config['NAME']}")
+    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {db_config['NAME']}")
 
 
 
