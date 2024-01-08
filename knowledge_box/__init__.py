@@ -14,7 +14,7 @@ def create_app(config_path="config.json"):
         config = json.load(config_file)
         db_config = config["DATABASE"]
 
-    app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_config["USERNAME"]}:{db_config["PASSWORD"]}!@' \
+    app.config["SQLALCHEMY_DATABASE_URI"] = f'mysql+pymysql://{db_config["USERNAME"]}:{db_config["PASSWORD"]}@' \
                                             f'{db_config["HOST"]}:{db_config["PORT"]}/{db_config["NAME"]}'
     app.config["SECRET_KEY"] = config["SECRET_KEY"]
     app.config['PORT'] = config["PORT"]
