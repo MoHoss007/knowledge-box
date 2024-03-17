@@ -12,4 +12,23 @@ Knowledge Box is an innovative tool designed for users to efficiently save and u
 ## First-Time Setup
 
 Before running the project, it is essential to perform a one-time setup. This involves running the `setup.py` script, which prepares the environment and dependencies required for Knowledge Box to run. The database information, ocr.space API key, and other configurations can be set in `config.json`.
+Create a `config.json` file in the project root to adjust application settings as needed for development, production, and testing environments:
+```json
+{
+  "DATABASE": {
+    "HOST": "localhost",
+    "USERNAME": "your_username",
+    "PASSWORD": "your_password",
+    "PORT": "3306",
+    "NAME": "your_database_name"
+  },
+  "SECRET_KEY": "your_secret_key",
+  "API_KEY": "your_api_key",
+  "DEBUG": true,
+  "PORT": 5000,
+  "TOPICS": [
+      "your_topics"
+  ]
+}
+```
 
